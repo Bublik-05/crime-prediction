@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Prediction Interface</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .container { 
+            display: flex; 
+            width: 100%; 
+        }
+        .input-section, .output-section { 
+            padding: 20px; 
+            width: 50%; 
+            box-sizing: border-box; 
+        }
+        .input-section { 
+            background-color: #f9f9f9; 
+        }
+        .output-section { 
+            background-color: #ffffff; 
+            overflow-y: auto; 
+        }
+        .input-field { 
+            margin-bottom: 10px; 
+        }
+        .input-field label { 
+            display: block; 
+            margin-bottom: 5px; 
+            font-weight: bold;
+        }
+        .input-field input, .input-field select { 
+            width: 100%; 
+            padding: 8px; 
+            box-sizing: border-box; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+        }
+        .button { 
+            padding: 10px 20px; 
+            cursor: pointer; 
+            margin-top: 10px; 
+            border-radius: 4px; 
+            border: none; 
+        }
+        .predict-button { 
+            background-color: #4CAF50; 
+            color: white; 
+        }
+        .city-button { 
+            background-color: #2196F3; 
+            color: white; 
+        }
+        #prediction-output { 
+            font-size: 1.2em; 
+            font-weight: bold; 
+            margin-top: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-section">
+            <h2>Input Data</h2>
+
+            <!-- Выбор страны и города -->
+            <div class="input-field">
+                <label for="country">Country:</label>
+                <select id="country" onchange="updateCities()">
+                    <option value="">Select Country</option>
+                    <option value="USA">USA</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Kazakhstan">Kazakhstan</option>
+                    <!-- Добавьте другие страны по необходимости -->
+                </select>
+            </div>
+            <div class="input-field">
+                <label for="city">City:</label>
+                <select id="city" onchange="autoFillData()">
+                    <option value="">Select City</option>
+                </select>
+            </div>
+
+            <!-- Поля для ввода данных -->
+            <form id="input-form">
+                <div class="input-field">
+                    <label for="population">Population:</label>
+                    <input type="number" id="population" name="population" required>
+                </div>
+                <div class="input-field">
+                    <label for="racepctblack">Race Percent Black:</label>
+                    <input type="number" step="0.01" id="racepctblack" name="racepctblack" required>
+                </div>
+                <div class="input-field">
+                    <label for="racePctWhite">Race Percent White:</label>
+                    <input type="number" step="0.01" id="racePctWhite" name="racePctWhite" required>
+                </div>
+                <div class="input-field">
+                    <label for="agePct12t21">Percent Age 12 to 21:</label>
+                    <input type="number" step="0.01" id="agePct12t21" name="agePct12t21" required>
+                </div>
+                <div class="input-field">
+                    <label for="agePct65up">Percent Age 65 and Up:</label>
+                    <input type="number" step="0.01" id="agePct65up" name="agePct65up" required>
+                </div>
+                <div class="input-field">
+                    <label for="medIncome">Median Income:</label>
+                    <input type="number" id="medIncome" name="medIncome" required>
+                </div>
+                <div class="input-field">
+                    <label for="PctPopUnderPov">Percent Population Under Poverty:</label>
+                    <input type="number" step="0.01" id="PctPopUnderPov" name="PctPopUnderPov" required>
+                </div>
+                <div class="input-field">
+                    <label for="PctUnemployed">Percent Unemployed:</label>
+                    <input type="number" step="0.01" id="PctUnemployed" name="PctUnemployed" required>
+                </div>
+                <div class="input-field">
+                    <label for="PctEmplManu">Percent Employed in Manufacturing:</label>
+                    <input type="number" step="0.01" id="PctEmplManu" name="PctEmplManu" required>
+                </div>
+                <div class="input-field">
+                    <label for="PctEmploy">Percent Employed:</label>
+                    <input type="number" step="0.01" id="PctEmploy" name="PctEmploy" required>
+                </div>
+                <div class="input-field">
+                    <label for="PctLess9thGrade">Percent Less than 9th Grade:</label>
+                    <input type="number" step="0.01" id="PctLess9thGrade" name="PctLess9thGrade" required>
+                </div>
+                <div class="input-field">
+                    <label for="PctNotHSGrad">Percent Not High School Graduate:</label>
+                    <input type="number" step="0.01" id="PctNotHSGrad" name="PctNotHSGrad" required>
+                </div>
+                <div class="input-field">
+                    <label for="PctBSorMore">Percent with Bachelor's or More:</label>
+                    <input type="number" step="0.01" id="PctBSorMore" name="PctBSorMore" required>
+                </div>
+                <div class="input-field">
+                    <label for="LemasSwornFT">Lemas Sworn Full-Time Officers:</label>
+                    <input type="number" id="LemasSwornFT" name="LemasSwornFT" required>
+                </div>
+                <!--
+                <div class="input-field">
+                    <label for="PolicReqPerOffic">Police Requests Per Officer:</label>
+                    <input type="number" step="0.01" id="PolicReqPerOffic" name="PolicReqPerOffic" required>
+                </div>
+                -->
+                <div class="input-field">
+                    <label for="PolicBudgPerPop">Police Budget Per Population:</label>
+                    <input type="number" step="0.01" id="PolicBudgPerPop" name="PolicBudgPerPop" required>
+                </div>
+                <button type="button" class="button predict-button" onclick="predict()">Predict</button>
+            </form>
+        </div>
+
+        <div class="output-section">
+            <h2>Prediction Results</h2>
+            <div id="prediction-output">
+                <!-- Predictions will be displayed here -->
+            </div>
+            <canvas id="chart" width="400" height="400"></canvas> <!-- Добавляем canvas для графика -->
+        </div>        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Данные для автозаполнения
+    const cityData = {
+    USA: {
+        "New York": { population: 8419000, racepctblack: 24.3, racePctWhite: 42.7, agePct12t21: 13.2, agePct65up: 15.6, medIncome: 67800, PctPopUnderPov: 14.1, PctUnemployed: 8.1, PctEmplManu: 6.3, PctEmploy: 58.0, PctLess9thGrade: 5.4, PctNotHSGrad: 18.7, PctBSorMore: 35.8, LemasSwornFT: 36000, PolicReqPerOffic: 35.1, PolicBudgPerPop: 105.0 },
+        "Los Angeles": { population: 3980000, racepctblack: 9.0, racePctWhite: 49.8, agePct12t21: 13.0, agePct65up: 11.7, medIncome: 55000, PctPopUnderPov: 19.0, PctUnemployed: 7.2, PctEmplManu: 8.5, PctEmploy: 54.0, PctLess9thGrade: 10.1, PctNotHSGrad: 20.5, PctBSorMore: 31.1, LemasSwornFT: 10000, PolicReqPerOffic: 27.2, PolicBudgPerPop: 115.0 }
+    },
+    Canada: {
+        "Toronto": { population: 2930000, racepctblack: 8.9, racePctWhite: 52.0, agePct12t21: 14.2, agePct65up: 16.0, medIncome: 75000, PctPopUnderPov: 10.1, PctUnemployed: 6.5, PctEmplManu: 5.4, PctEmploy: 60.5, PctLess9thGrade: 2.3, PctNotHSGrad: 15.0, PctBSorMore: 40.1, LemasSwornFT: 5500, PolicReqPerOffic: 20.0, PolicBudgPerPop: 120.0 },
+        "Vancouver": { population: 675000, racepctblack: 1.2, racePctWhite: 46.9, agePct12t21: 11.5, agePct65up: 18.1, medIncome: 68000, PctPopUnderPov: 12.0, PctUnemployed: 5.7, PctEmplManu: 7.0, PctEmploy: 59.0, PctLess9thGrade: 1.8, PctNotHSGrad: 13.7, PctBSorMore: 45.3, LemasSwornFT: 3000, PolicReqPerOffic: 22.5, PolicBudgPerPop: 110.0 }
+    },
+    Kazakhstan: {
+        "Almaty": { population: 2000000, racepctblack: 0, racePctWhite: 70, agePct12t21: 12.5, agePct65up: 10.2, medIncome: 55000, PctPopUnderPov: 5.0, PctUnemployed: 5.8, PctEmplManu: 10.5, PctEmploy: 57.3, PctLess9thGrade: 2.1, PctNotHSGrad: 12.5, PctBSorMore: 35.0, LemasSwornFT: 4000, PolicReqPerOffic: 30, PolicBudgPerPop: 110.0 },
+        "Astana": { population: 1200000, racepctblack: 0, racePctWhite: 75, agePct12t21: 13.1, agePct65up: 9.8, medIncome: 60000, PctPopUnderPov: 4.0, PctUnemployed: 6.0, PctEmplManu: 11.0, PctEmploy: 58.0, PctLess9thGrade: 1.8, PctNotHSGrad: 11.0, PctBSorMore: 40.0, LemasSwornFT: 3500, PolicReqPerOffic: 28, PolicBudgPerPop: 115.0 },
+        "Shymkent": { population: 1000000, racepctblack: 0, racePctWhite: 65, agePct12t21: 14.0, agePct65up: 8.5, medIncome: 45000, PctPopUnderPov: 8.0, PctUnemployed: 7.2, PctEmplManu: 12.0, PctEmploy: 55.0, PctLess9thGrade: 3.0, PctNotHSGrad: 15.0, PctBSorMore: 25.0, LemasSwornFT: 3000, PolicReqPerOffic: 25, PolicBudgPerPop: 105.0 },
+        "Karaganda": { population: 500000, racepctblack: 0, racePctWhite: 67, agePct12t21: 11.0, agePct65up: 15.0, medIncome: 40000, PctPopUnderPov: 10.0, PctUnemployed: 8.0, PctEmplManu: 20.0, PctEmploy: 50.0, PctLess9thGrade: 4.0, PctNotHSGrad: 18.0, PctBSorMore: 22.0, LemasSwornFT: 2000, PolicReqPerOffic: 20, PolicBudgPerPop: 90.0 },
+        "Aktobe": { population: 400000, racepctblack: 0, racePctWhite: 68, agePct12t21: 10.0, agePct65up: 12.5, medIncome: 42000, PctPopUnderPov: 6.5, PctUnemployed: 7.5, PctEmplManu: 15.0, PctEmploy: 52.0, PctLess9thGrade: 3.5, PctNotHSGrad: 17.0, PctBSorMore: 28.0, LemasSwornFT: 1800, PolicReqPerOffic: 22, PolicBudgPerPop: 95.0 }
+    }
+};
+
+
+    const cities = [];
+    const predictions = {};  // Хранит предсказания для каждого города
+    let chart;
+
+    function updateCities() {
+        const country = document.getElementById('country').value;
+        const citySelect = document.getElementById('city');
+        citySelect.innerHTML = '<option value="">Select City</option>';
+
+        if (cityData[country]) {
+            Object.keys(cityData[country]).forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                option.textContent = city;
+                citySelect.appendChild(option);
+            });
+        }
+    }
+
+    function autoFillData() {
+        const country = document.getElementById('country').value;
+        const city = document.getElementById('city').value;
+
+        if (cityData[country] && cityData[country][city]) {
+            const data = cityData[country][city];
+            for (let key in data) {
+                if (document.getElementById(key)) {
+                    document.getElementById(key).value = data[key];
+                }
+            }
+        } else {
+            document.querySelectorAll('#input-form input').forEach(input => input.value = '');
+        }
+    }
+
+    function predict() {
+    const formData = new FormData(document.getElementById('input-form'));
+    const data = Object.fromEntries(formData);
+
+    const cityName = document.getElementById('city').value || "Unknown City";
+    
+    fetch('http://127.0.0.1:5000/predict', {  // Используем полный адрес с портом
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(result => {
+        predictions[cityName] = result.prediction;
+        updateChart();
+        document.getElementById('prediction-output').innerText = `Prediction for ${cityName}: ${result.prediction}`;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('prediction-output').innerText = `Error: ${error.message}`;
+    });
+}
+
+
+
+    function updateChart() {
+        const labels = Object.keys(predictions);
+        const data = Object.values(predictions);
+
+        if (chart) {
+            chart.destroy(); // Уничтожаем предыдущий график перед созданием нового
+        }
+
+        const ctx = document.getElementById('chart').getContext('2d');
+        chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Predicted Murders',
+                    data: data,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
