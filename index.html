@@ -88,75 +88,67 @@
             </div>
 
             <!-- Поля для ввода данных -->
-            <form id="input-form">
-                <div class="input-field">
-                    <label for="population">Population:</label>
-                    <input type="number" id="population" name="population" required>
-                </div>
-                <div class="input-field">
-                    <label for="racepctblack">Race Percent Black:</label>
-                    <input type="number" step="0.01" id="racepctblack" name="racepctblack" required>
-                </div>
-                <div class="input-field">
-                    <label for="racePctWhite">Race Percent White:</label>
-                    <input type="number" step="0.01" id="racePctWhite" name="racePctWhite" required>
-                </div>
-                <div class="input-field">
-                    <label for="agePct12t21">Percent Age 12 to 21:</label>
-                    <input type="number" step="0.01" id="agePct12t21" name="agePct12t21" required>
-                </div>
-                <div class="input-field">
-                    <label for="agePct65up">Percent Age 65 and Up:</label>
-                    <input type="number" step="0.01" id="agePct65up" name="agePct65up" required>
-                </div>
-                <div class="input-field">
-                    <label for="medIncome">Median Income:</label>
-                    <input type="number" id="medIncome" name="medIncome" required>
-                </div>
-                <div class="input-field">
-                    <label for="PctPopUnderPov">Percent Population Under Poverty:</label>
-                    <input type="number" step="0.01" id="PctPopUnderPov" name="PctPopUnderPov" required>
-                </div>
-                <div class="input-field">
-                    <label for="PctUnemployed">Percent Unemployed:</label>
-                    <input type="number" step="0.01" id="PctUnemployed" name="PctUnemployed" required>
-                </div>
-                <div class="input-field">
-                    <label for="PctEmplManu">Percent Employed in Manufacturing:</label>
-                    <input type="number" step="0.01" id="PctEmplManu" name="PctEmplManu" required>
-                </div>
-                <div class="input-field">
-                    <label for="PctEmploy">Percent Employed:</label>
-                    <input type="number" step="0.01" id="PctEmploy" name="PctEmploy" required>
-                </div>
-                <div class="input-field">
-                    <label for="PctLess9thGrade">Percent Less than 9th Grade:</label>
-                    <input type="number" step="0.01" id="PctLess9thGrade" name="PctLess9thGrade" required>
-                </div>
-                <div class="input-field">
-                    <label for="PctNotHSGrad">Percent Not High School Graduate:</label>
-                    <input type="number" step="0.01" id="PctNotHSGrad" name="PctNotHSGrad" required>
-                </div>
-                <div class="input-field">
-                    <label for="PctBSorMore">Percent with Bachelor's or More:</label>
-                    <input type="number" step="0.01" id="PctBSorMore" name="PctBSorMore" required>
-                </div>
-                <div class="input-field">
-                    <label for="LemasSwornFT">Lemas Sworn Full-Time Officers:</label>
-                    <input type="number" id="LemasSwornFT" name="LemasSwornFT" required>
-                </div>
-                <!--
-                <div class="input-field">
-                    <label for="PolicReqPerOffic">Police Requests Per Officer:</label>
-                    <input type="number" step="0.01" id="PolicReqPerOffic" name="PolicReqPerOffic" required>
-                </div>
-                -->
-                <div class="input-field">
-                    <label for="PolicBudgPerPop">Police Budget Per Population:</label>
-                    <input type="number" step="0.01" id="PolicBudgPerPop" name="PolicBudgPerPop" required>
-                </div>
-                <button type="button" class="button predict-button" onclick="predict()">Predict</button>
-            </form>
+            <!-- Поля для ввода данных -->
+<form id="input-form">
+    <div class="input-field">
+        <label for="assaultPerPop">Assault Per Population:</label>
+        <input type="number" step="0.01" id="assaultPerPop" name="assaultPerPop" required>
+    </div>
+    <div class="input-field">
+        <label for="rapes">Rapes:</label>
+        <input type="number" id="rapes" name="rapes" required>
+    </div>
+    <div class="input-field">
+        <label for="robbbPerPop">Robberies Per Population:</label>
+        <input type="number" step="0.01" id="robbbPerPop" name="robbbPerPop" required>
+    </div>
+    <div class="input-field">
+        <label for="rapesPerPop">Rapes Per Population:</label>
+        <input type="number" step="0.01" id="rapesPerPop" name="rapesPerPop" required>
+    </div>
+    <div class="input-field">
+        <label for="PctKidsBornNeverMar">Percent Kids Born Never Married:</label>
+        <input type="number" step="0.01" id="PctKidsBornNeverMar" name="PctKidsBornNeverMar" required>
+    </div>
+    <div class="input-field">
+        <label for="murdPerPop">Murders Per Population:</label>
+        <input type="number" step="0.01" id="murdPerPop" name="murdPerPop" required>
+    </div>
+    <div class="input-field">
+        <label for="NumKidsBornNeverMar">Number of Kids Born Never Married:</label>
+        <input type="number" id="NumKidsBornNeverMar" name="NumKidsBornNeverMar" required>
+    </div>
+    <div class="input-field">
+        <label for="OwnOccMedVal">Owner Occupied Median Value:</label>
+        <input type="number" id="OwnOccMedVal" name="OwnOccMedVal" required>
+    </div>
+    <div class="input-field">
+        <label for="MalePctNevMarr">Male Percent Never Married:</label>
+        <input type="number" step="0.01" id="MalePctNevMarr" name="MalePctNevMarr" required>
+    </div>
+    <div class="input-field">
+        <label for="HousVacant">Houses Vacant:</label>
+        <input type="number" step="0.01" id="HousVacant" name="HousVacant" required>
+    </div>
+    <div class="input-field">
+        <label for="racePctHisp">Race Percent Hispanic:</label>
+        <input type="number" step="0.01" id="racePctHisp" name="racePctHisp" required>
+    </div>
+    <div class="input-field">
+        <label for="PctFam2Par">Percent Families with Two Parents:</label>
+        <input type="number" step="0.01" id="PctFam2Par" name="PctFam2Par" required>
+    </div>
+    <div class="input-field">
+        <label for="PctPersOwnOccup">Percent Persons Owning Occupied Houses:</label>
+        <input type="number" step="0.01" id="PctPersOwnOccup" name="PctPersOwnOccup" required>
+    </div>
+    <div class="input-field">
+        <label for="larcPerPop">Larcenies Per Population:</label>
+        <input type="number" step="0.01" id="larcPerPop" name="larcPerPop" required>
+    </div>
+    <button type="button" class="button predict-button" onclick="predict()">Predict</button>
+</form>
+
         </div>
 
         <div class="output-section">
@@ -173,21 +165,105 @@
     // Данные для автозаполнения
     const cityData = {
     USA: {
-        "New York": { population: 8419000, racepctblack: 24.3, racePctWhite: 42.7, agePct12t21: 13.2, agePct65up: 15.6, medIncome: 67800, PctPopUnderPov: 14.1, PctUnemployed: 8.1, PctEmplManu: 6.3, PctEmploy: 58.0, PctLess9thGrade: 5.4, PctNotHSGrad: 18.7, PctBSorMore: 35.8, LemasSwornFT: 36000, PolicReqPerOffic: 35.1, PolicBudgPerPop: 105.0 },
-        "Los Angeles": { population: 3980000, racepctblack: 9.0, racePctWhite: 49.8, agePct12t21: 13.0, agePct65up: 11.7, medIncome: 55000, PctPopUnderPov: 19.0, PctUnemployed: 7.2, PctEmplManu: 8.5, PctEmploy: 54.0, PctLess9thGrade: 10.1, PctNotHSGrad: 20.5, PctBSorMore: 31.1, LemasSwornFT: 10000, PolicReqPerOffic: 27.2, PolicBudgPerPop: 115.0 }
+        "New York": { 
+            assaultPerPop: 10.4, rapes: 107, robbbPerPop: 105, rapesPerPop: 50,
+            PctKidsBornNeverMar: 103, murdPerPop: 49, NumKidsBornNeverMar: 80,
+            OwnOccMedVal: 39, MalePctNevMarr: 71, HousVacant: 5, racePctHisp: 43,
+            PctFam2Par: 67, PctPersOwnOccup: 113, larcPerPop: 71
+        },
+        "Los Angeles": {
+            assaultPerPop: 9.8, rapes: 90, robbbPerPop: 120, rapesPerPop: 45,
+            PctKidsBornNeverMar: 90, murdPerPop: 39, NumKidsBornNeverMar: 75,
+            OwnOccMedVal: 45, MalePctNevMarr: 65, HousVacant: 4, racePctHisp: 35,
+            PctFam2Par: 55, PctPersOwnOccup: 95, larcPerPop: 85
+        }
     },
     Canada: {
-        "Toronto": { population: 2930000, racepctblack: 8.9, racePctWhite: 52.0, agePct12t21: 14.2, agePct65up: 16.0, medIncome: 75000, PctPopUnderPov: 10.1, PctUnemployed: 6.5, PctEmplManu: 5.4, PctEmploy: 60.5, PctLess9thGrade: 2.3, PctNotHSGrad: 15.0, PctBSorMore: 40.1, LemasSwornFT: 5500, PolicReqPerOffic: 20.0, PolicBudgPerPop: 120.0 },
-        "Vancouver": { population: 675000, racepctblack: 1.2, racePctWhite: 46.9, agePct12t21: 11.5, agePct65up: 18.1, medIncome: 68000, PctPopUnderPov: 12.0, PctUnemployed: 5.7, PctEmplManu: 7.0, PctEmploy: 59.0, PctLess9thGrade: 1.8, PctNotHSGrad: 13.7, PctBSorMore: 45.3, LemasSwornFT: 3000, PolicReqPerOffic: 22.5, PolicBudgPerPop: 110.0 }
+        "Ottawa": { 
+        assaultPerPop: 2.4, 
+        rapes: 78, 
+        robbbPerPop: 1.2, 
+        rapesPerPop: 24,
+        PctKidsBornNeverMar: 60, 
+        murdPerPop: 0.5, 
+        NumKidsBornNeverMar: 50,
+        OwnOccMedVal: 42, 
+        MalePctNevMarr: 30, 
+        HousVacant: 3, 
+        racePctHisp: 10,
+        PctFam2Par: 75, 
+        PctPersOwnOccup: 65, 
+        larcPerPop: 18
+        },
+        "Toronto": {
+        assaultPerPop: 3.2, 
+        rapes: 91, 
+        robbbPerPop: 1.5, 
+        rapesPerPop: 31,
+        PctKidsBornNeverMar: 70, 
+        murdPerPop: 1.25, 
+        NumKidsBornNeverMar: 65,
+        OwnOccMedVal: 45, 
+        MalePctNevMarr: 40, 
+        HousVacant: 4, 
+        racePctHisp: 15,
+        PctFam2Par: 55, 
+        PctPersOwnOccup: 70, 
+        larcPerPop: 2.5
+        }
     },
     Kazakhstan: {
-        "Almaty": { population: 2000000, racepctblack: 0, racePctWhite: 70, agePct12t21: 12.5, agePct65up: 10.2, medIncome: 55000, PctPopUnderPov: 5.0, PctUnemployed: 5.8, PctEmplManu: 10.5, PctEmploy: 57.3, PctLess9thGrade: 2.1, PctNotHSGrad: 12.5, PctBSorMore: 35.0, LemasSwornFT: 4000, PolicReqPerOffic: 30, PolicBudgPerPop: 110.0 },
-        "Astana": { population: 1200000, racepctblack: 0, racePctWhite: 75, agePct12t21: 13.1, agePct65up: 9.8, medIncome: 60000, PctPopUnderPov: 4.0, PctUnemployed: 6.0, PctEmplManu: 11.0, PctEmploy: 58.0, PctLess9thGrade: 1.8, PctNotHSGrad: 11.0, PctBSorMore: 40.0, LemasSwornFT: 3500, PolicReqPerOffic: 28, PolicBudgPerPop: 115.0 },
-        "Shymkent": { population: 1000000, racepctblack: 0, racePctWhite: 65, agePct12t21: 14.0, agePct65up: 8.5, medIncome: 45000, PctPopUnderPov: 8.0, PctUnemployed: 7.2, PctEmplManu: 12.0, PctEmploy: 55.0, PctLess9thGrade: 3.0, PctNotHSGrad: 15.0, PctBSorMore: 25.0, LemasSwornFT: 3000, PolicReqPerOffic: 25, PolicBudgPerPop: 105.0 },
-        "Karaganda": { population: 500000, racepctblack: 0, racePctWhite: 67, agePct12t21: 11.0, agePct65up: 15.0, medIncome: 40000, PctPopUnderPov: 10.0, PctUnemployed: 8.0, PctEmplManu: 20.0, PctEmploy: 50.0, PctLess9thGrade: 4.0, PctNotHSGrad: 18.0, PctBSorMore: 22.0, LemasSwornFT: 2000, PolicReqPerOffic: 20, PolicBudgPerPop: 90.0 },
-        "Aktobe": { population: 400000, racepctblack: 0, racePctWhite: 68, agePct12t21: 10.0, agePct65up: 12.5, medIncome: 42000, PctPopUnderPov: 6.5, PctUnemployed: 7.5, PctEmplManu: 15.0, PctEmploy: 52.0, PctLess9thGrade: 3.5, PctNotHSGrad: 17.0, PctBSorMore: 28.0, LemasSwornFT: 1800, PolicReqPerOffic: 22, PolicBudgPerPop: 95.0 }
+        "Almaty": {
+            "assaultPerPop": 12.0, "rapes": 120, "robbbPerPop": 150, "rapesPerPop": 60,
+            "PctKidsBornNeverMar": 65, "murdPerPop": 40, "NumKidsBornNeverMar": 55,
+            "OwnOccMedVal": 50, "MalePctNevMarr": 65, "HousVacant": 5, "racePctHisp": 15,
+            "PctFam2Par": 75, "PctPersOwnOccup": 80, "larcPerPop": 75
+         },
+        "Shymkent": {
+        "assaultPerPop": 6.0, "rapes": 50, "robbbPerPop": 60, "rapesPerPop": 20,
+        "PctKidsBornNeverMar": 60, "murdPerPop": 20, "NumKidsBornNeverMar": 45,
+        "OwnOccMedVal": 55, "MalePctNevMarr": 50, "HousVacant": 3, "racePctHisp": 10,
+        "PctFam2Par": 85, "PctPersOwnOccup": 90, "larcPerPop": 40
+         },
+        "Astana": {
+        "assaultPerPop": 10.0, "rapes": 80, "robbbPerPop": 100, "rapesPerPop": 40,
+        "PctKidsBornNeverMar": 62, "murdPerPop": 30, "NumKidsBornNeverMar": 50,
+        "OwnOccMedVal": 60, "MalePctNevMarr": 60, "HousVacant": 4, "racePctHisp": 12,
+        "PctFam2Par": 78, "PctPersOwnOccup": 82, "larcPerPop": 65
+         },
+        "Aktobe": {
+        "assaultPerPop": 9.0, "rapes": 70, "robbbPerPop": 80, "rapesPerPop": 35,
+        "PctKidsBornNeverMar": 61, "murdPerPop": 28, "NumKidsBornNeverMar": 48,
+        "OwnOccMedVal": 45, "MalePctNevMarr": 55, "HousVacant": 4, "racePctHisp": 11,
+        "PctFam2Par": 80, "PctPersOwnOccup": 84, "larcPerPop": 60
+         },
+        "Karaganda": {
+        "assaultPerPop": 11.0, "rapes": 90, "robbbPerPop": 120, "rapesPerPop": 45,
+        "PctKidsBornNeverMar": 63, "murdPerPop": 35, "NumKidsBornNeverMar": 52,
+        "OwnOccMedVal": 52, "MalePctNevMarr": 62, "HousVacant": 6, "racePctHisp": 14,
+        "PctFam2Par": 77, "PctPersOwnOccup": 81, "larcPerPop": 70
+        },
+        "Atyrau": {
+        "assaultPerPop": 8.5, "rapes": 60, "robbbPerPop": 70, "rapesPerPop": 30,
+        "PctKidsBornNeverMar": 59, "murdPerPop": 25, "NumKidsBornNeverMar": 47,
+        "OwnOccMedVal": 53, "MalePctNevMarr": 58, "HousVacant": 3, "racePctHisp": 12,
+        "PctFam2Par": 82, "PctPersOwnOccup": 86, "larcPerPop": 55
+        },
+        "Aktau": {
+        "assaultPerPop": 7.5, "rapes": 50, "robbbPerPop": 65, "rapesPerPop": 25,
+        "PctKidsBornNeverMar": 58, "murdPerPop": 20, "NumKidsBornNeverMar": 44,
+        "OwnOccMedVal": 54, "MalePctNevMarr": 56, "HousVacant": 4, "racePctHisp": 10,
+        "PctFam2Par": 83, "PctPersOwnOccup": 87, "larcPerPop": 50
+        },
+        "Taraz": {
+        "assaultPerPop": 8.0, "rapes": 65, "robbbPerPop": 75, "rapesPerPop": 32,
+        "PctKidsBornNeverMar": 60, "murdPerPop": 25, "NumKidsBornNeverMar": 46,
+        "OwnOccMedVal": 50, "MalePctNevMarr": 58, "HousVacant": 4, "racePctHisp": 11,
+        "PctFam2Par": 81, "PctPersOwnOccup": 85, "larcPerPop": 58
+        }
     }
 };
+
 
 
     const cities = [];
@@ -269,7 +345,7 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: 'Predicted Murders',
+                    label: 'Violent Crimes Per Population',
                     data: data,
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderColor: 'rgba(75, 192, 192, 1)',
