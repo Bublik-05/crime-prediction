@@ -43,8 +43,7 @@ Crime Prediction System — это проект, разработанный в �
 
 1. **Клонируйте репозиторий**:
    ```bash
-   git clone https://github.com/your-repository-link.git
-   cd your-repository-name
+   git@github.com:Bublik-05/crime-prediction.git
 
 2. **Установите зависимости**:
    ```bash
