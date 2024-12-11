@@ -11,6 +11,12 @@
             height: 100vh; 
             margin: 0; 
         }
+        #results-table {
+            display: none;
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
         .container { 
             display: flex; 
             width: 100%; 
@@ -156,8 +162,21 @@
             <div id="prediction-output">
                 <!-- Predictions will be displayed here -->
             </div>
-            <canvas id="chart" width="400" height="400"></canvas> <!-- Добавляем canvas для графика -->
-        </div>        
+            <canvas id="chart" width="400" height="400"></canvas> <!-- Canvas for chart -->
+            <!-- Таблица для отображения данных -->
+            <table id="results-table" style="width:100%; margin-top:20px; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">City</th>
+                        <th style="border: 1px solid #ccc; padding: 8px; text-align: left;">Prediction Violent Crimes Per Population</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Данные будут добавляться сюда -->
+                </tbody>
+            </table>
+        </div>
+             
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -302,35 +321,63 @@
     }
 
     function predict() {
-    const formData = new FormData(document.getElementById('input-form'));
-    const data = Object.fromEntries(formData);
-
-    const cityName = document.getElementById('city').value || "Unknown City";
+        const formData = new FormData(document.getElementById('input-form'));
+        const data = Object.fromEntries(formData);
     
-    fetch('http://127.0.0.1:5000/predict', {  // Используем полный адрес с портом
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Server error: ${response.status}`);
+        const cityName = document.getElementById('city').value || "Unknown City";
+        
+        fetch('http://127.0.0.1:5000/predict', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(result => {
+            predictions[cityName] = result.prediction;
+            updateChart();
+            updateTable(cityName, result.prediction);
+            document.getElementById('prediction-output').innerText = `Prediction for ${cityName}: ${result.prediction}`;
+            
+            // Показать таблицу после получения предсказания
+            document.getElementById('results-table').style.display = 'table';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('prediction-output').innerText = `Error: ${error.message}`;
+        });
+    }
+    
+    
+    function updateTable(cityName, predictionValue) {
+        const tableBody = document.querySelector('#results-table tbody');
+    
+        // Проверяем, есть ли уже строка с этим городом
+        let existingRow = Array.from(tableBody.rows).find(row => row.cells[0].innerText === cityName);
+    
+        if (existingRow) {
+            // Если строка найдена, обновляем предсказание
+            existingRow.cells[1].innerText = predictionValue;
+        } else {
+            // Если строки нет, добавляем новую
+            const row = tableBody.insertRow();
+            const cityCell = row.insertCell(0);
+            const predictionCell = row.insertCell(1);
+    
+            cityCell.innerText = cityName;
+            cityCell.style.border = '1px solid #ccc';
+            cityCell.style.padding = '8px';
+    
+            predictionCell.innerText = predictionValue;
+            predictionCell.style.border = '1px solid #ccc';
+            predictionCell.style.padding = '8px';
         }
-        return response.json();
-    })
-    .then(result => {
-        predictions[cityName] = result.prediction;
-        updateChart();
-        document.getElementById('prediction-output').innerText = `Prediction for ${cityName}: ${result.prediction}`;
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById('prediction-output').innerText = `Error: ${error.message}`;
-    });
-}
-
-
-
+    }
+    
     function updateChart() {
         const labels = Object.keys(predictions);
         const data = Object.values(predictions);
@@ -365,3 +412,4 @@
 
 </body>
 </html>
+
