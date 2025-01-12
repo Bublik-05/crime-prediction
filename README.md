@@ -1,63 +1,76 @@
-# Crime Prediction System (ХАКАТОН project challenge #20)
-Crime Prediction System — это проект, разработанный в рамках ХАКАТОН Project Challenge #20. Он предназначен для анализа данных о преступлениях и создания модели, предсказывающей вероятность преступления в зависимости от заданных параметров. Проект включает бэкенд-логику для обработки данных и предсказаний, а также фронтенд-интерфейс для взаимодействия с пользователем.
+# Crime Prediction System (HACKATHON Project Challenge #20)
 
-
-
-
-## Файлы проекта
-
-- **`app.py`**: Основной файл для запуска веб-приложения.
-- **`Project20.ipynb`**: Jupyter Notebook для анализа данных и обучения моделей.
-- **`crime_model.pkl`**: Сохранённая модель для предсказания.
-- **`scaler.pkl`**: Сохранённый StandardScaler для обработки данных.
-- **`crimedata.csv`**: Данные о преступности, используемые для обучения.
-- **`index.html`**: HTML-файл для интерфейса веб-приложения.
-- **`README.md`**: Документация проекта.
+The **Crime Prediction System** is a project developed as part of HACKATHON Project Challenge #20. It is designed to analyze crime data and create a model that predicts the likelihood of a crime based on given parameters. The project includes backend logic for data processing and predictions, as well as a frontend interface for user interaction.
 
 ---
 
-## Структура проекта
+## Project Files
+
+- **`app.py`**: Main file for running the web application.  
+- **`Project20.ipynb`**: Jupyter Notebook for data analysis and model training.  
+- **`crime_model.pkl`**: Saved model for crime prediction.  
+- **`scaler.pkl`**: Saved StandardScaler for data preprocessing.  
+- **`crimedata.csv`**: Crime data used for training the model.  
+- **`index.html`**: HTML file for the web application interface.  
+- **`README.md`**: Project documentation.
+
+---
+
+## Project Structure
 
 ```plaintext
 project-folder/
-├── app.py                # Веб-приложение
-├── Project20.ipynb       # Jupyter Notebook с кодом анализа и обучения
-├── crime_model.pkl       # Сохранённая модель
-├── scaler.pkl            # Сохранённый StandardScaler
-├── crimedata.csv         # Данные для обучения
-├── index.html            # Интерфейс веб-приложения
-├── README.md             # Документация проекта
+├── app.py                # Web application
+├── Project20.ipynb       # Jupyter Notebook for analysis and training
+├── crime_model.pkl       # Saved prediction model
+├── scaler.pkl            # Saved StandardScaler
+├── crimedata.csv         # Dataset for training
+├── index.html            # Web application interface
+├── README.md             # Project documentation
 ```
 
-## Используемые технологии
+---
 
-- **`Python`**: Основной язык программирования, на котором построен проект.
-- **`Pandas, NumPy`**: Библиотеки для обработки и анализа данных.
-- **`Scikit-learn`**: Инструменты для обучения и оценки моделей машинного обучения.
-- **`Matplotlib, Seaborn`**: Библиотеки для визуализации данных.
-- **`Flask`**: Фреймворк для создания API и взаимодействия с фронтендом.
-- **`HTML, CSS, JS`**: Технологии для разработки пользовательского интерфейса.
+## Technologies Used
 
+- **`Python`**: The main programming language used for the project.  
+- **`Pandas, NumPy`**: Libraries for data processing and analysis.  
+- **`Scikit-learn`**: Tools for training and evaluating machine learning models.  
+- **`Matplotlib, Seaborn`**: Libraries for data visualization.  
+- **`Flask`**: Framework for building the API and frontend interaction.  
+- **`HTML, CSS, JS`**: Technologies for developing the user interface.
 
+---
 
-## Инструкция по запуску
+## How to Run
 
-1. **Клонируйте репозиторий**:
+1. **Clone the repository**:  
    ```bash
-   git@github.com:Bublik-05/crime-prediction.git
+   git clone git@github.com:Bublik-05/crime-prediction.git
+   ```
 
-2. **Установите зависимости**:
+2. **Install dependencies**:  
    ```bash
    pip install -r requirements.txt
-3. **Запустите Jupyter Notebook (все функции по порядку)**
-4. **Запустите app.py**
-5. **Запустите index.html**
+   ```
 
+3. **Run the Jupyter Notebook**:  
+   Execute all the cells in **Project20.ipynb** sequentially.
 
+4. **Run the web application**:  
+   ```bash
+   python app.py
+   ```
 
-## Команда № 18
-### Paзработка бэкенда: Зинетов Алихан Дарханович, Щудро Александр Александрович.
-### Разработка фронтенда:  Щудро Александр Александрович, Пернебек Абылай Абайұлы.
+5. **Open the web interface**:  
+   Launch **index.html** in your browser.
+
+--- 
+
+## GROUP № 18
+### Machine learning(Project20.ipynb ): Zinetov Alikhan
+### Backend(app.py): Щудро Александр Александрович.
+### Frontend(index.html):  Pernebek Abylay
 
 
 
