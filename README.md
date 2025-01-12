@@ -69,7 +69,7 @@ project-folder/
 
 ## GROUP № 18
 ### Machine learning(Project20.ipynb ): Zinetov Alikhan
-### Backend(app.py): Щудро Александр Александрович.
+### Backend(app.py): Alexandr Chshudro
 ### Frontend(index.html):  Pernebek Abylay
 
 
